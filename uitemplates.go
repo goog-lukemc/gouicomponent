@@ -103,15 +103,15 @@ func (c *ComponentLib) NewStyle(text string) *gouidom.Element {
 	})
 }
 
-// NewSpan create a new span element in the dom with the provided text.
-func (c *ComponentLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
-	return c.newComponent(&ComponentCFG{
-		Parent:             parent,
-		Typ:                gouidom.HTMLTag.Span,
-		InitializationText: text,
-		Class:              classes,
-	})
-}
+// // NewSpan create a new span element in the dom with the provided text.
+// func (c *ComponentLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
+// 	return c.newComponent(&ComponentCFG{
+// 		Parent:             parent,
+// 		Typ:                gouidom.HTMLTag.Span,
+// 		InitializationText: text,
+// 		Class:              classes,
+// 	})
+// }
 
 func (c *ComponentLib) NewDivWrapper(parent string, classes ...string) *gouidom.Element {
 	return c.newComponent(&ComponentCFG{

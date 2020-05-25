@@ -16,6 +16,7 @@ type ComponentCFG struct {
 	Typ                string
 	InitializationText string
 	Class              []string
+	CustomAttributes   map[string]string
 }
 
 func NewComponentLib(v *gouidom.VDOM) *ComponentLib {
@@ -24,7 +25,7 @@ func NewComponentLib(v *gouidom.VDOM) *ComponentLib {
 
 // NewSpan create a new span element in the dom with the provided text.
 func (c *ComponentLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
-	return c.newConponent(&ComponetCFG{
+	return c.newConponent(&ComponentCFG{
 		Parent:             parent,
 		Typ:                gouidom.HTMLTag.Span,
 		InitializationText: text,
@@ -40,7 +41,7 @@ func (c *ComponentLib) NewWrapperDiv(parent string) *gouidom.Element {
 	})
 }
 
-func (c *ComponentLib) newConponent(cfg *ComponetCFG) *gouidom.Element {
+func (c *ComponentLib) newConponent(cfg *ComponentCFG) *gouidom.Element {
 	ele, err := gouidom.NewElement(cfg.ID, cfg.Parent, cfg.Typ, cfg.InitializationText, cfg.Class...)
 	if err != nil {
 		gouidom.CLog("%s", err.Error())
