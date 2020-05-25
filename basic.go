@@ -1,15 +1,16 @@
 package gouicomponent
 
 import (
-	"gouidom"
 	"path"
+
+	"github.com/goog-lukemc/gouidom"
 )
 
 type ComponentLib struct {
 	v *gouidom.VDOM
 }
 
-type ComponetCFG struct {
+type ComponentCFG struct {
 	ID                 string
 	Parent             string
 	Typ                string

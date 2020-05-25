@@ -1,9 +1,10 @@
 package gouicomponent
 
 import (
-	"gouidom"
 	"path"
 	"strings"
+
+	"github.com/goog-lukemc/gouidom"
 )
 
 func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
