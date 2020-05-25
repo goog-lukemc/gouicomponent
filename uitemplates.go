@@ -6,23 +6,6 @@ import (
 	"strings"
 )
 
-type ComponentLib struct {
-	v *gouidom.VDOM
-}
-
-type ComponentCFG struct {
-	ID                 string
-	Parent             string
-	Typ                string
-	InitializationText string
-	Class              []string
-	CustomAttributes   map[string]string
-}
-
-func NewComponentLib(v *gouidom.VDOM) *ComponentLib {
-	return &ComponentLib{v: v}
-}
-
 func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
 	pre := c.NewPre(parent)
 	code := c.NewCode(PathOf(pre))
