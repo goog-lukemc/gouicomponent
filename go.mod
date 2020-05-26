@@ -1,4 +1,4 @@
-module github.com/goog-lukemc/gouicomponent
+module github.com/goog-lukemc/gouielement
 
 go 1.13
 

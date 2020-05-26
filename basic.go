@@ -1,4 +1,4 @@
-package gouicomponent
+package gouielement
 
 import (
 	"path"
@@ -6,11 +6,11 @@ import (
 	"github.com/goog-lukemc/gouidom"
 )
 
-type ComponentLib struct {
+type ElementLib struct {
 	v *gouidom.VDOM
 }
 
-type ComponentCFG struct {
+type ElementCFG struct {
 	ID                 string
 	Parent             string
 	Typ                string
@@ -19,13 +19,14 @@ type ComponentCFG struct {
 	CustomAttributes   map[string]string
 }
 
-func NewComponentLib(v *gouidom.VDOM) *ComponentLib {
-	return &ComponentLib{v: v}
+// NewElementLib Create a new lib for element use
+func NewElementLib(v *gouidom.VDOM) *ElementLib {
+	return &ElementLib{v: v}
 }
 
 // NewSpan create a new span element in the dom with the provided text.
-func (c *ComponentLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
-	return c.newConponent(&ComponentCFG{
+func (c *ElementLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
 		Parent:             parent,
 		Typ:                gouidom.HTMLTag.Span,
 		InitializationText: text,
@@ -33,46 +34,73 @@ func (c *ComponentLib) NewSpan(parent string, text string, classes ...string) *g
 	})
 }
 
-func (c *ComponentLib) NewWrapperDiv(parent string) *gouidom.Element {
-	return c.newComponent(&ComponentCFG{
+// WrapperDiv create a new containing div for the elements
+func (c *ElementLib) WrapperDiv(parent string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
 		Parent: parent,
 		Typ:    gouidom.HTMLTag.Div,
 		Class:  []string{"grid", "container"},
 	})
 }
 
-func (c *ComponentLib) newConponent(cfg *ComponentCFG) *gouidom.Element {
+func (c *ElementLib) newElement(cfg *ElementCFG) *gouidom.Element {
 	ele, err := gouidom.NewElement(cfg.ID, cfg.Parent, cfg.Typ, cfg.InitializationText, cfg.Class...)
 	if err != nil {
 		gouidom.CLog("%s", err.Error())
+	}
+	for k, v := range cfg.CustomAttributes {
+		ele.SetAttribute(k, v)
 	}
 	c.v.AddElement(ele)
 	return ele
 }
 
-func NewWrapper(parent string, v *gouidom.VDOM) *gouidom.Element {
-	wrapper, err := gouidom.NewElement("", parent, gouidom.HTMLTag.Div, "", "grid", "container")
-	if err != nil {
-		gouidom.CLog("%s", err.Error())
-	}
-	v.AddElement(wrapper)
-	return wrapper
+// PathOf returns the path of the element for appending
+func PathOf(ele *gouidom.Element) string {
+	return path.Join(ele.Parent, ele.ID)
 }
 
-func Grid(parent string, num int, v *gouidom.VDOM, class ...string) {
-	// Create the div wrapper for the layout
-	wrapper, err := gouidom.NewElement("", parent, gouidom.HTMLTag.Div, "", "grid", "container")
-	if err != nil {
-		gouidom.CLog("%s", err.Error())
-	}
-	v.AddElement(wrapper)
+// InjectStyle injects a new style tag into the body of the document
+func (c *ElementLib) InjectStyle(text string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:             "html/body",
+		Typ:                gouidom.HTMLTag.Style,
+		InitializationText: text,
+	})
+}
 
-	for i := 0; i < num; i++ {
-		content, err := gouidom.NewElement("", path.Join(wrapper.Parent, wrapper.ID), gouidom.HTMLTag.Div, "", class...)
-		if err != nil {
-			gouidom.CLog("%s", err.Error())
-		}
-		v.AddElement(content)
-	}
+// Article Adds and article tag usually used to display documentation.
+func (c *ElementLib) Article(parent string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    gouidom.HTMLTag.Article,
+		Class:  classes,
+	})
+}
 
+// Section Adds and article tag usually used to display documentation.
+func (c *ElementLib) Section(parent string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    gouidom.HTMLTag.Section,
+		Class:  classes,
+	})
+}
+
+// Pre Adds a new <pre> tag to the dom>
+func (c *ElementLib) Pre(parent string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    "pre",
+		Class:  classes,
+	})
+}
+
+// Code Adds a new <pre> tag to the dom>
+func (c *ElementLib) Code(parent string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    "code",
+		Class:  classes,
+	})
 }
