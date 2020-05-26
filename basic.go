@@ -116,10 +116,11 @@ func (c *ElementLib) Paragraph(parent string, classes ...string) *gouidom.Elemen
 }
 
 // Heading add a <h> tag to the doc with a specified size
-func (c *ElementLib) Heading(parent string, size int, classes ...string) *gouidom.Element {
+func (c *ElementLib) Heading(parent string, size int, text string, classes ...string) *gouidom.Element {
 	return c.newElement(&ElementCFG{
-		Parent: parent,
-		Typ:    "h" + strconv.Itoa(size),
-		Class:  classes,
+		Parent:             parent,
+		Typ:                "h" + strconv.Itoa(size),
+		Class:              classes,
+		InitializationText: text,
 	})
 }
