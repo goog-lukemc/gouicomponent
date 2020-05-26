@@ -13,9 +13,9 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 
 	article := c.Article(PathOf(wrapper))
 
-	c.Heading(PathOf(article), 2)
+	c.Heading(PathOf(article), 2, data.Title)
 
-	c.Heading(PathOf(article), 4)
+	c.Heading(PathOf(article), 4, data.Subtitle)
 
 	section := c.Section(PathOf(article))
 
