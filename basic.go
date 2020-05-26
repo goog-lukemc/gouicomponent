@@ -124,3 +124,12 @@ func (c *ElementLib) Heading(parent string, size int, text string, classes ...st
 		InitializationText: text,
 	})
 }
+
+func (c *ElementLib) IMG(parent string, ca map[string]string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:           parent,
+		Typ:              gouidom.HTMLTag.Img,
+		Class:            classes,
+		CustomAttributes: ca,
+	})
+}
