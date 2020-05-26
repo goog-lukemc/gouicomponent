@@ -2,6 +2,7 @@ package gouielement
 
 import (
 	"path"
+	"strconv"
 
 	"github.com/goog-lukemc/gouidom"
 )
@@ -24,8 +25,8 @@ func NewElementLib(v *gouidom.VDOM) *ElementLib {
 	return &ElementLib{v: v}
 }
 
-// NewSpan create a new span element in the dom with the provided text.
-func (c *ElementLib) NewSpan(parent string, text string, classes ...string) *gouidom.Element {
+// Span create a new span element in the dom with the provided text.
+func (c *ElementLib) Span(parent string, text string, classes ...string) *gouidom.Element {
 	return c.newElement(&ElementCFG{
 		Parent:             parent,
 		Typ:                gouidom.HTMLTag.Span,
@@ -101,6 +102,24 @@ func (c *ElementLib) Code(parent string, classes ...string) *gouidom.Element {
 	return c.newElement(&ElementCFG{
 		Parent: parent,
 		Typ:    "code",
+		Class:  classes,
+	})
+}
+
+// Paragraph adds a <p> tag to the dom
+func (c *ElementLib) Paragraph(parent string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    "p",
+		Class:  classes,
+	})
+}
+
+// Heading add a <h> tag to the doc with a specified size
+func (c *ElementLib) Heading(parent string, size int, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent: parent,
+		Typ:    "h" + strconv.Itoa(size),
 		Class:  classes,
 	})
 }

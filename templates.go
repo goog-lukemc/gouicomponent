@@ -1,5 +1,30 @@
 package gouielement
 
+import "github.com/goog-lukemc/gouidom"
+
+type ReadingData struct {
+	Title    string
+	Subtitle string
+	Content  []*gouidom.Element
+}
+
+func (c *ElementLib) Readable(parent string, data *ReadingData) {
+	wrapper := c.WrapperDiv(parent)
+
+	article := c.Article(PathOf(wrapper))
+
+	c.Heading(PathOf(article), 2)
+
+	c.Heading(PathOf(article), 4)
+
+	section := c.Section(PathOf(article))
+
+	for _, item := range data.Content {
+		section.AppendChild(item)
+	}
+
+}
+
 // func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
 // 	pre := c.NewPre(parent)
 // 	code := c.NewCode(PathOf(pre))
