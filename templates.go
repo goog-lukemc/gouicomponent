@@ -32,17 +32,17 @@ func (c *ElementLib) AppStyleEdit(parent string) {
 		Parent: parent,
 	}
 
-	htmlDoc := &gouidom.Element{
-		Typ:    gouidom.HTMLTag.Span,
-		Text:   c.v.GetHTMLDocument(),
-		Parent: parent,
-	}
+	// htmlDoc := &gouidom.Element{
+	// 	Typ:    gouidom.HTMLTag.Span,
+	// 	Text:   c.v.GetHTMLDocument(),
+	// 	Parent: parent,
+	// }
 
-	currentStyle := &gouidom.Element{
-		Typ:    gouidom.HTMLTag.Span,
-		Text:   c.v.GetAppStyle(),
-		Parent: parent,
-	}
+	// currentStyle := &gouidom.Element{
+	// 	Typ:    gouidom.HTMLTag.Span,
+	// 	Text:   c.v.GetAppStyle(),
+	// 	Parent: parent,
+	// }
 
 	c.v.AddElement(cssTemplate)
 }
