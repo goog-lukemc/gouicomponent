@@ -26,7 +26,7 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 }
 
 func (c *ElementLib) AppStyleEdit(parent string) {
-	w := c.WrapperDiv("html/body")
+	w := c.WrapperDiv(parent)
 	c.Span(PathOf(w), c.v.GenStyleTemplate())
 	c.Span(PathOf(w), c.v.GetHTMLDocument())
 	c.Span(PathOf(w), c.v.GetAppStyle())
