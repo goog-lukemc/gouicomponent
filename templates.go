@@ -26,10 +26,13 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 }
 
 func (c *ElementLib) AppStyleEdit(parent string) {
-	w := c.WrapperDiv(parent)
-	c.Span(PathOf(w), c.v.GenStyleTemplate())
-	c.Span(PathOf(w), c.v.GetHTMLDocument())
-	c.Span(PathOf(w), c.v.GetAppStyle())
+	w := c.Div(parent, "edit", "code", "html")
+	pa := c.Pre(PathOf(w))
+	c.Code(PathOf(pa), c.v.GetHTMLDocument())
+
+	// c.Span(PathOf(w), c.v.GenStyleTemplate())
+	// c.Span(PathOf(w))
+	// c.Span(PathOf(w), c.v.GetAppStyle())
 
 }
 

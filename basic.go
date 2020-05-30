@@ -98,7 +98,7 @@ func (c *ElementLib) Pre(parent string, classes ...string) *gouidom.Element {
 }
 
 // Code Adds a new <pre> tag to the dom>
-func (c *ElementLib) Code(parent string, classes ...string) *gouidom.Element {
+func (c *ElementLib) Code(parent string, text string, classes ...string) *gouidom.Element {
 	return c.newElement(&ElementCFG{
 		Parent: parent,
 		Typ:    "code",
@@ -129,6 +129,15 @@ func (c *ElementLib) IMG(parent string, ca map[string]string, classes ...string)
 	return c.newElement(&ElementCFG{
 		Parent:           parent,
 		Typ:              gouidom.HTMLTag.Img,
+		Class:            classes,
+		CustomAttributes: ca,
+	})
+}
+
+func (c *ElementLib) Div(parent string, ca map[string]string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:           parent,
+		Typ:              gouidom.HTMLTag.Div,
 		Class:            classes,
 		CustomAttributes: ca,
 	})
