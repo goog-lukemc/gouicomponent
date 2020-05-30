@@ -11,13 +11,13 @@ type ReadingData struct {
 func (c *ElementLib) Readable(parent string, data *ReadingData) {
 	wrapper := c.WrapperDiv(parent)
 
-	article := c.Article(PathOf(wrapper), "article")
+	article := c.Article(PathOf(wrapper))
 
-	c.Heading(PathOf(article), 1, data.Title, "heading")
+	c.Heading(PathOf(article), 1, data.Title)
 
-	c.Heading(PathOf(article), 3, data.Subtitle, "sub-heading")
+	c.Heading(PathOf(article), 3, data.Subtitle)
 
-	section := c.Section(PathOf(article), "section")
+	section := c.Section(PathOf(article))
 
 	for _, item := range data.Content {
 		section.AppendChild(item)
