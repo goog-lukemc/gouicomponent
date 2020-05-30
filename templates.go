@@ -25,15 +25,10 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 
 }
 
-func (c *ElementLib) AppStyleEdit(parent string) {
-	w := c.Div(parent, map[string]string{}, "edit", "code", "html")
+func (c *ElementLib) CodeBlock(parent string, content string, classes ...string) {
+	w := c.Div(parent, map[string]string{})
 	pa := c.Pre(PathOf(w))
-	c.Code(PathOf(pa), c.v.GetHTMLDocument())
-
-	// c.Span(PathOf(w), c.v.GenStyleTemplate())
-	// c.Span(PathOf(w))
-	// c.Span(PathOf(w), c.v.GetAppStyle())
-
+	c.Code(PathOf(pa), content)
 }
 
 // func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
