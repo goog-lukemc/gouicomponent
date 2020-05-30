@@ -44,7 +44,7 @@ func (c *ElementLib) AppStyleEdit(parent string) {
 		Parent: parent,
 	}
 
-	c.v.AddElement(cssTemplate, htmlDoc, currentStyle)
+	c.v.AddElement(cssTemplate)
 }
 
 // func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
