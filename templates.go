@@ -44,6 +44,7 @@ func (c *ElementLib) AppStyleEdit(parent string) {
 	// 	Parent: parent,
 	// }
 
+	gouidom.CLog("%v", c.v)
 	c.v.AddElement(cssTemplate)
 }
 
