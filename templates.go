@@ -28,7 +28,7 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 func (c *ElementLib) AppStyleEdit(parent string) {
 	w := c.Div(parent, map[string]string{}, "edit", "code", "html")
 	pa := c.Pre(PathOf(w))
-	c.Code(PathOf(pa), c.v.GetAppStyle())
+	c.Code(PathOf(pa), c.v.GetHTMLDocument())
 
 	// c.Span(PathOf(w), c.v.GenStyleTemplate())
 	// c.Span(PathOf(w))
