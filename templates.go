@@ -26,26 +26,11 @@ func (c *ElementLib) Readable(parent string, data *ReadingData) {
 }
 
 func (c *ElementLib) AppStyleEdit(parent string) {
-	cssTemplate := &gouidom.Element{
-		Typ:    gouidom.HTMLTag.Span,
-		Text:   c.v.GenStyleTemplate(),
-		Parent: parent,
-	}
+	w := c.WrapperDiv("html/body")
+	c.Span(PathOf(w), c.v.GenStyleTemplate())
+	c.Span(PathOf(w), c.v.GetHTMLDocument())
+	c.Span(PathOf(w), c.v.GetAppStyle())
 
-	// htmlDoc := &gouidom.Element{
-	// 	Typ:    gouidom.HTMLTag.Span,
-	// 	Text:   c.v.GetHTMLDocument(),
-	// 	Parent: parent,
-	// }
-
-	// currentStyle := &gouidom.Element{
-	// 	Typ:    gouidom.HTMLTag.Span,
-	// 	Text:   c.v.GetAppStyle(),
-	// 	Parent: parent,
-	// }
-
-	gouidom.CLog("%v", c.v)
-	c.v.AddElement(cssTemplate)
 }
 
 // func (c *ComponentLib) NewPreCode(parent string, text string, classes ...string) *gouidom.Element {
