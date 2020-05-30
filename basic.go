@@ -100,9 +100,10 @@ func (c *ElementLib) Pre(parent string, classes ...string) *gouidom.Element {
 // Code Adds a new <pre> tag to the dom>
 func (c *ElementLib) Code(parent string, text string, classes ...string) *gouidom.Element {
 	return c.newElement(&ElementCFG{
-		Parent: parent,
-		Typ:    "code",
-		Class:  classes,
+		Parent:             parent,
+		Typ:                "code",
+		Class:              classes,
+		InitializationText: text,
 	})
 }
 
