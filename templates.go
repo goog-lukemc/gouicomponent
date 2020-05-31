@@ -31,15 +31,24 @@ func (c *ElementLib) Readable(parent string, data *ArticleData) {
 func (c *ElementLib) SetContent(parent string, cc []*ContentConfig) {
 
 	gas := func(name string, cfg map[string]interface{}) []string {
-		return cfg[name].([]string)
+		if val, ok := cfg[name].([]string); ok {
+			return val
+		}
+		return nil
 	}
 
 	gs := func(name string, cfg map[string]interface{}) string {
-		return cfg[name].(string)
+		if val, ok := cfg[name].(string); ok {
+			return val
+		}
+		return ""
 	}
 
 	gmss := func(name string, cfg map[string]interface{}) map[string]string {
-		return cfg[name].(map[string]string)
+		if val, ok := cfg[name].(map[string]string); ok {
+			return val
+		}
+		return map[string]string{}
 	}
 
 	for _, item := range cc {
