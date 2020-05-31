@@ -1,6 +1,8 @@
 package gouielement
 
-import "github.com/goog-lukemc/gouidom"
+import (
+	"github.com/goog-lukemc/gouidom"
+)
 
 type ArticleData struct {
 	Title    string
@@ -27,12 +29,25 @@ func (c *ElementLib) Readable(parent string, data *ArticleData) {
 }
 
 func (c *ElementLib) SetContent(parent string, cc []*ContentConfig) {
+
+	gas := func(name string, cfg map[string]interface{}) []string {
+		return cfg[name].([]string)
+	}
+
+	gs := func(name string, cfg map[string]interface{}) string {
+		return cfg[name].(string)
+	}
+
+	gmss := func(name string, cfg map[string]interface{}) map[string]string {
+		return cfg[name].(map[string]string)
+	}
+
 	for _, item := range cc {
 		switch item.Typ {
 		case "span":
-			c.Span(parent, item.CFG["text"].(string), item.CFG["classes"].([]string))
+			c.Span(parent, gs("text", item.CFG))
 		case "img":
-			c.IMG(parent, item.CFG["ea"].(map[string]string), item.CFG["classes"].([]string))
+			c.IMG(parent, gmss("ea", item.CFG), gas("classes", item.CFG)...)
 		default:
 			gouidom.CLog("Not Implemented:%v", c)
 		}
