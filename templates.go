@@ -63,8 +63,18 @@ func (c *ElementLib) SetContent(parent string, cc []*ContentConfig) {
 	}
 }
 
+// Codebock creates a prepared code block for use
 func (c *ElementLib) CodeBlock(parent string, content string, classes ...string) {
 	w := c.Div(parent, map[string]string{})
 	pa := c.Pre(PathOf(w))
 	c.Code(PathOf(pa), content)
+}
+
+// UnOrderedList create an unordered list
+func (c *ElementLib) UnOrderedList(parent string, list []string) {
+	w := c.Div(parent, map[string]string{})
+	ul := c.Ul(PathOf(w), map[string]string{})
+	for _, item := range list {
+		c.Li(PathOf(ul), item)
+	}
 }

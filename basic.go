@@ -143,3 +143,30 @@ func (c *ElementLib) Div(parent string, ca map[string]string, classes ...string)
 		CustomAttributes: ca,
 	})
 }
+
+func (c *ElementLib) Ul(parent string, ca map[string]string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:           parent,
+		Typ:              gouidom.HTMLTag.Ul,
+		Class:            classes,
+		CustomAttributes: ca,
+	})
+}
+
+func (c *ElementLib) Ol(parent string, ca map[string]string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:           parent,
+		Typ:              gouidom.HTMLTag.Ol,
+		Class:            classes,
+		CustomAttributes: ca,
+	})
+}
+
+func (c *ElementLib) Li(parent string, text string, classes ...string) *gouidom.Element {
+	return c.newElement(&ElementCFG{
+		Parent:             parent,
+		Typ:                gouidom.HTMLTag.Li,
+		Class:              classes,
+		InitializationText: text,
+	})
+}
