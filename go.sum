@@ -8,3 +8,5 @@ github.com/goog-lukemc/gouidom v0.0.6 h1:XBzwldWWvL2OUYgG1LDo/qx3pATzQpEKdalhtqF
 github.com/goog-lukemc/gouidom v0.0.6/go.mod h1:evcIr3p0ZdKo+ibCEJ6W4DLZvz3K24Fi0jUF73x4W5A=
 github.com/goog-lukemc/gouidom v0.0.8 h1:s+l4J9UChX7bZPmYCUCdjGm9F7KhVCC77J32/a2f9xU=
 github.com/goog-lukemc/gouidom v0.0.8/go.mod h1:evcIr3p0ZdKo+ibCEJ6W4DLZvz3K24Fi0jUF73x4W5A=
+github.com/goog-lukemc/gouidom v0.0.11 h1:dwS22SfbhoXw2j0plH5OqYWHN5ogjHzBliRzIyHEaaM=
+github.com/goog-lukemc/gouidom v0.0.11/go.mod h1:evcIr3p0ZdKo+ibCEJ6W4DLZvz3K24Fi0jUF73x4W5A=
