@@ -54,6 +54,9 @@ func (c *ElementLib) SetContent(parent string, cc []*ContentConfig) {
 	for _, item := range cc {
 		switch item.Typ {
 		case "span":
+			sh := gs("secheading",item.CFG) !=""{
+				c.Span(parent, sh)	
+			}
 			c.Span(parent, gs("text", item.CFG))
 		case "img":
 			c.IMG(parent, gmss("ea", item.CFG), gas("classes", item.CFG)...)
